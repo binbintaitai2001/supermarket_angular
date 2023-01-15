@@ -1,0 +1,12 @@
+<div class="container mt-3">
+  <!-- product container -->
+  <div class="row d-flex justify-content-around mt-5">
+    <!-- one product -->
+    <div
+      class="col-lg-4 col-small-2 mb-5 d-flex justify-content-center"
+      *ngFor="let product of products"
+    >
+      <app-one-product [product]="product"> </app-one-product>
+    </div>
+  </div>
+</div>
