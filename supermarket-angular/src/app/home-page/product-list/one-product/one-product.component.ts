@@ -12,4 +12,8 @@ export class OneProductComponent implements OnInit {
   ngOnInit() {}
 
   @Input() product: Product;
+
+  OpenCartMenu(proId: number): void {
+    console.log("OpenCartMenu clicked ", proId);
+  }
 }

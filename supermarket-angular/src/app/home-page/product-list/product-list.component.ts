@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "src/app/api.service";
 import { Product } from "src/app/Entity/Product";
-import { HomePageService } from "../home-page.service";
 
 @Component({
   selector: "app-product-list",
@@ -8,11 +8,13 @@ import { HomePageService } from "../home-page.service";
   styleUrls: ["./product-list.component.css"],
 })
 export class ProductListComponent implements OnInit {
-  constructor(private homePageService: HomePageService) {
-    this.products = homePageService.getProducts();
+  constructor(private service: ApiService) {
+    service.getProducts().subscribe((data) => {
+      this.products = data;
+    });
   }
 
   ngOnInit() {}
 
-  private products: Product[];
+  private products: Product[] = [];
 }
