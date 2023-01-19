@@ -19,15 +19,22 @@
           </a>
         </li>
       </ul>
+      <h1>SUPER MARKET</h1>
       <div>
-        <button class="btn btn-no-outline p-3 ms-3" type="submit">
+        <button
+          class="btn btn-no-outline p-3 ms-3"
+          type="submit"
+          *ngIf="isUser"
+        >
           <img
             src="../assets/product/cart.png"
             alt="Logo"
             width="50"
             height="50"
           />
-          <span class="badge rounded-pill bg-danger text-light">4</span>
+          <span class="badge rounded-pill bg-danger text-light" *ngIf="loggedIn"
+            >4</span
+          >
         </button>
         <button class="btn btn-outline-primary p-3 ms-3" type="submit">
           <span class="text-dark">Account </span>

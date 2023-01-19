@@ -6,7 +6,7 @@
     <figure style="width: 100%; height: 75%">
       <img
         class="card-img"
-        [src]="product.imageUrl"
+        [src]="product.img"
         alt="Card image"
         style="width: 100%; height: 100%; object-fit: cover"
       />
@@ -17,7 +17,9 @@
         <p class="card-text">
           {{ product.price | currency : "VND" }}
         </p>
-        <a href="#" class="btn btn-primary">Add to Order</a>
+        <button class="btn btn-primary" (click)="OpenCartMenu(product.id)">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>

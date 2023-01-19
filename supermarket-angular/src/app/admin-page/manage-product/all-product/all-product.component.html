@@ -1,0 +1,58 @@
+<div class="card">
+  <div
+    class="card-header d-flex justify-content-between text-success font-weight-bold"
+  >
+    Products List
+    <a
+      title="Thêm danh mục"
+      class="btn btn-outline-success"
+      routerLink="/admin/product/add"
+      role="button"
+    >
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Add
+    </a>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Available</th>
+          <th scope="col">Image</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td class="font-weight-bold">{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <img [src]="product.img" />
+          </td>
+          <td class="text-right">
+            <a
+              title="Edit"
+              class="btn btn-sm btn-outline-primary mr-2"
+              role="button"
+              routerLink="/admin/category/edit"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+            <a
+              title="Delete"
+              class="btn btn-sm btn-outline-danger text-danger"
+              role="button"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

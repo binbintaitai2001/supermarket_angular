@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-5">
+  <div
+    class="collapse navbar-collapse d-flex justify-content-center align-items-center"
+  >
+    <a
+      [ngClass]="currentSelected == 'dashboard' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('dashboard')"
+      routerLink="/admin"
+    >
+      DashBoard
+    </a>
+
+    <a
+      [ngClass]="currentSelected == 'category' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('category')"
+      routerLink="/admin/category/all"
+    >
+      Categories
+    </a>
+
+    <a
+      [ngClass]="currentSelected == 'product' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('product')"
+      routerLink="/admin/product/all"
+    >
+      Products
+    </a>
+
+    <a
+      [ngClass]="currentSelected == 'order' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('order')"
+      routerLink="/admin/order"
+    >
+      Orders
+    </a>
+
+    <a
+      [ngClass]="currentSelected == 'user' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('user')"
+      routerLink="user"
+    >
+      Users
+    </a>
+  </div>
+</nav>

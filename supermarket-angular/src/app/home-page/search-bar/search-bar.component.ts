@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "src/app/api.service";
 import { Category } from "src/app/Entity/Category";
-import { HomePageService } from "../home-page.service";
 
 @Component({
   selector: "app-search-bar",
@@ -8,8 +8,10 @@ import { HomePageService } from "../home-page.service";
   styleUrls: ["./search-bar.component.css"],
 })
 export class SearchBarComponent implements OnInit {
-  constructor(private homePageService: HomePageService) {
-    this.categories = homePageService.getCategories();
+  constructor(private service: ApiService) {
+    service.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
   }
 
   ngOnInit() {}

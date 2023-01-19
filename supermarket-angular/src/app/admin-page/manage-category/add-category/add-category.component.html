@@ -1,0 +1,34 @@
+<div class="container">
+  <form #addCategoryForm="ngForm" novalidate (ngSubmit)="handleSubmit()">
+    <div class="form-group">
+      <label>Category Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          name.touched && name.invalid && !addCategoryForm.submitted
+        "
+        name="name"
+        #name="ngModel"
+        required
+        [(ngModel)]="category.name"
+      />
+      <small
+        class="text-danger"
+        [class.d-none]="
+          name.untouched || name.valid || addCategoryForm.submitted
+        "
+      >
+        category name is required
+      </small>
+    </div>
+
+    <button
+      [disabled]="addCategoryForm.invalid"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Add Category
+    </button>
+  </form>
+</div>

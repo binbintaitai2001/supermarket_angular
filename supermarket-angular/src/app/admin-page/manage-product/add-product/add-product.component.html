@@ -1,0 +1,115 @@
+<form #addProductForm="ngForm" novalidate (ngSubmit)="handleSubmit()">
+  <div class="form-group">
+    <label>Product Name</label>
+    <input
+      type="text"
+      class="form-control"
+      [class.is-invalid]="
+        name.touched && name.invalid && !addProductForm.submitted
+      "
+      name="name"
+      #name="ngModel"
+      required
+      [(ngModel)]="product.name"
+    />
+    <small
+      class="text-danger"
+      [class.d-none]="name.untouched || name.valid || addProductForm.submitted"
+    >
+      Product name is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Product Price</label>
+    <input
+      type="text"
+      class="form-control"
+      [class.is-invalid]="
+        price.touched && price.invalid && !addProductForm.submitted
+      "
+      name="price"
+      #price="ngModel"
+      required
+      [(ngModel)]="product.price"
+    />
+    <small
+      class="text-danger"
+      [class.d-none]="
+        price.untouched || price.valid || addProductForm.submitted
+      "
+    >
+      Product price is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Product Quantity</label>
+    <input
+      type="text"
+      class="form-control"
+      [class.is-invalid]="
+        quantity.touched && quantity.invalid && !addProductForm.submitted
+      "
+      name="quantity"
+      #quantity="ngModel"
+      required
+      [(ngModel)]="product.quantity"
+    />
+    <small
+      class="text-danger"
+      [class.d-none]="
+        quantity.untouched || quantity.valid || addProductForm.submitted
+      "
+    >
+      Product quantity is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Product Category</label>
+    <select
+      class="custom-select"
+      required
+      [class.is-invalid]="
+        categoryName.touched &&
+        categoryName.invalid &&
+        !addProductForm.submitted
+      "
+      name="categoryName"
+      #categoryName="ngModel"
+      [(ngModel)]="product.category.id"
+    >
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+    <small
+      class="text-danger"
+      [class.d-none]="
+        categoryName.untouched || categoryName.valid || addProductForm.submitted
+      "
+      >please select category</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label>Product Image</label>
+    <input
+      type="file"
+      class="form-control"
+      name="file"
+      required
+      (change)="onFileSelected($event)"
+      #fileUpload
+    />
+  </div>
+
+  <button
+    [disabled]="addProductForm.invalid"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Submit form
+  </button>
+</form>
