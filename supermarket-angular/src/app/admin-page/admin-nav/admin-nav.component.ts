@@ -11,16 +11,12 @@ export class AdminNavComponent implements OnInit {
 
   ngOnInit() {}
 
-  currentSelected: string =
-    this.router.url.split("/").pop() === ""
-      ? "dashboard"
-      : this.router.url.split("/").pop();
+  currentSelected: string = this.router.url.split("/")[2];
 
   selectedClass: string = "navbar-brand btn btn-success text-light";
   nomalClass: string = "navbar-brand btn btn-secondary text-light";
 
   SetSelected(s: string): void {
     this.currentSelected = s;
-    console.log(this.router.url.split("/")[0]);
   }
 }

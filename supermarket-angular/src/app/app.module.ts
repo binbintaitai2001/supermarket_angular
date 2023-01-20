@@ -25,6 +25,9 @@ import { EditCategoryComponent } from './admin-page/manage-category/edit-categor
 import { AllCategoryComponent } from './admin-page/manage-category/all-category/all-category.component';
 import { AllProductComponent } from './admin-page/manage-product/all-product/all-product.component';
 import { AddProductComponent } from './admin-page/manage-product/add-product/add-product.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProductComponent } from './admin-page/manage-product/edit-product/edit-product.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { AddProductComponent } from './admin-page/manage-product/add-product/add
     AllCategoryComponent,
     AllProductComponent,
     AddProductComponent,
+    ProfileComponent,
+    EditProductComponent,
+    RegisterComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

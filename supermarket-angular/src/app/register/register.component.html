@@ -1,0 +1,261 @@
+<div class="container-fluid register_page_body">
+  <div class="row h-100 d-flex justify-content-center align-items-center">
+    <div class="col-sm-4">
+      <div *ngIf="RegisterFail">
+        <div
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>SignUp failed!</strong>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <h1>Sign Up</h1>
+      <form #GlobalRegister="ngForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control form-control-lg border-right-0"
+              id="FullName"
+              name="FullName"
+              autofocus
+              placeholder="Full Name"
+              #FullName="ngModel"
+              required
+              [(ngModel)]="user.fullname"
+              [class.is-invalid]="
+                FullName.touched &&
+                FullName.invalid &&
+                !GlobalRegister.submitted
+              "
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              FullName.untouched || FullName.valid || GlobalRegister.submitted
+            "
+          >
+            Full Name is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control form-control-lg border-right-0"
+              id="Address"
+              name="Address"
+              placeholder="Address"
+              #Address="ngModel"
+              [(ngModel)]="user.address"
+              required
+              [class.is-invalid]="
+                Address.touched && Address.invalid && !GlobalRegister.submitted
+              "
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa-solid fa-house-user"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              Address.untouched || Address.valid || GlobalRegister.submitted
+            "
+          >
+            Address is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="date"
+              class="form-control form-control-lg border-right-0"
+              id="DoB"
+              name="DoB"
+              placeholder="DoB"
+              #DoB="ngModel"
+              [(ngModel)]="user.dob"
+              title="Your Date Of Birth"
+              [class.is-invalid]="
+                DoB.touched && DoB.invalid && !GlobalRegister.submitted
+              "
+              required
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa-solid fa-cake-candles"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              DoB.untouched || DoB.valid || GlobalRegister.submitted
+            "
+          >
+            Date of Birth is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="tel"
+              pattern="^0.*[7-9].*\d{8}"
+              class="form-control form-control-lg border-right-0"
+              id="Phone"
+              name="Phone"
+              placeholder="Phone"
+              #Phone="ngModel"
+              [(ngModel)]="user.phone"
+              [class.is-invalid]="
+                Phone.touched && Phone.invalid && !GlobalRegister.submitted
+              "
+              required
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa-solid fa-phone"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              Phone.untouched || Phone.valid || GlobalRegister.submitted
+            "
+          >
+            Phone is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="email"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              class="form-control form-control-lg border-right-0"
+              id="Email"
+              name="Email"
+              placeholder="Email"
+              #Email="ngModel"
+              [(ngModel)]="user.email"
+              [class.is-invalid]="
+                Email.touched && Email.invalid && !GlobalRegister.submitted
+              "
+              required
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa-solid fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              Email.untouched || Email.valid || GlobalRegister.submitted
+            "
+          >
+            Email is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control form-control-lg border-right-0"
+              id="Password"
+              name="Password"
+              placeholder="Password"
+              #Password="ngModel"
+              [(ngModel)]="user.password"
+              [class.is-invalid]="
+                Password.touched &&
+                Password.invalid &&
+                !GlobalRegister.submitted
+              "
+              required
+            />
+            <div class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa fa-key" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <small
+            class="text-danger"
+            [class.d-none]="
+              Password.untouched || Password.valid || GlobalRegister.submitted
+            "
+          >
+            Password is required
+          </small>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input
+                type="checkbox"
+                aria-label="Checkbox for following text input"
+                (change)="showPass()"
+              />
+            </div>
+            Show Password
+          </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-around">
+          <div>
+            <a class="btn btn-lg btn-outline-info" href="/" role="button">
+              <i class="fa fa-home" aria-hidden="true"></i>
+              Home
+            </a>
+          </div>
+
+          <div class="ml-1">
+            <a class="btn btn-lg btn-outline-info" href="/login" role="button">
+              <i
+                class="fa-sharp fa-solid fa-address-card"
+                aria-hidden="true"
+              ></i>
+              Back To Login
+            </a>
+          </div>
+
+          <div class="flex-fill ml-1">
+            <button
+              type="submit"
+              class="btn btn-lg btn-info btn-block"
+              [disabled]="GlobalRegister.invalid"
+            >
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

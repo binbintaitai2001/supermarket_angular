@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -6,10 +7,23 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("isUser", this.route.snapshot.queryParamMap.get("isUser"));
+    console.log(
+      "isLoggedIn",
+      this.route.snapshot.queryParamMap.get("isLoggedIn")
+    );
+    this.isUser = this.route.snapshot.queryParamMap.get(
+      "isUser"
+    ) as unknown as boolean;
+
+    this.isLoggedIn = this.route.snapshot.queryParamMap.get(
+      "isLoggedIn"
+    ) as unknown as boolean;
+  }
   @Input() isUser: boolean;
 
-  @Input() loggedIn: boolean;
+  @Input() isLoggedIn: boolean;
 }

@@ -36,10 +36,20 @@
             >4</span
           >
         </button>
-        <button class="btn btn-outline-primary p-3 ms-3" type="submit">
+        <a
+          *ngIf="isLoggedIn; else login"
+          class="btn btn-outline-success p-3 ms-3"
+          routerLink="/profile"
+        >
           <span class="text-dark">Account </span>
           <img src="../assets/product/userImg.png" alt="Logo" />
-        </button>
+        </a>
+        <ng-template #login>
+          <a class="btn btn-outline-primary p-3 ms-3" routerLink="login">
+            <span class="text-dark">Login </span>
+            <img src="../assets/product/userImg.png" alt="Logo" />
+          </a>
+        </ng-template>
       </div>
     </div>
   </div>

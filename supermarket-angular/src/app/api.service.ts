@@ -5,6 +5,7 @@ import { Category } from "./Entity/Category";
 import { LoginForm } from "./Entity/LoginForm";
 import { Product } from "./Entity/Product";
 import { HttpHeaders } from "@angular/common/http";
+import { User } from "./Entity/User";
 
 @Injectable({
   providedIn: "root",
@@ -13,6 +14,10 @@ export class ApiService {
   private ServerLink = "http://localhost:5000";
 
   constructor(private http: HttpClient) {}
+
+  Register(user: User): Observable<any> {
+    return this.http.post<LoginForm>(this.ServerLink + "/signUp", user);
+  }
 
   Login(loginForm: LoginForm): Observable<any> {
     return this.http.post<LoginForm>(this.ServerLink + "/login", loginForm);
