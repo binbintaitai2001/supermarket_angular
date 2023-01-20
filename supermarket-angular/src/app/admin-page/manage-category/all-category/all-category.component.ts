@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs/internal/Subscription";
@@ -16,21 +17,32 @@ export class AllCategoryComponent implements OnInit {
     private router: Router
   ) {}
 
-  apicallSub?: Subscription;
-
   private categories: Category[];
 
   ngOnInit() {
-    console.log("calling api for categories list");
-    this.apicallSub = this.service.getCategories().subscribe((data) => {
+    this.service.getCategories().subscribe((data) => {
       this.categories = data;
     });
   }
 
-  ngOnDestroy() {
-    if (this.apicallSub) {
-      this.apicallSub.unsubscribe();
-      console.log("apicallSub unsubcribed");
+  deleteCategory(id): void {
+    const token = localStorage.getItem("token").toString();
+    if (token !== null) {
+      const headers = new HttpHeaders().set("Authorization", token);
+
+      this.service.DeleteCategory(id, headers).subscribe(
+        (data) => {
+          console.log("no Error", data);
+          this.service.getCategories().subscribe((data) => {
+            this.categories = data;
+          });
+        },
+        (error) => {
+          console.log("Error", error);
+        }
+      );
+    } else {
+      console.log("token expired");
     }
   }
 }

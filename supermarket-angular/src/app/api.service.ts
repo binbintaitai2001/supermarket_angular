@@ -23,12 +23,12 @@ export class ApiService {
     return this.http.post<LoginForm>(this.ServerLink + "/login", loginForm);
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.ServerLink + "/product/list");
-  }
-
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.ServerLink + "/category/list");
+  }
+
+  getCategoryById(id): Observable<Category> {
+    return this.http.get<Category>(this.ServerLink + "/category/byId/" + id);
   }
 
   CreateCategiory(category: Category, headers: HttpHeaders): Observable<any> {
@@ -37,6 +37,29 @@ export class ApiService {
       category,
       { headers: headers }
     );
+  }
+
+  UpdateCategory(category: Category, headers: HttpHeaders): Observable<any> {
+    return this.http.put<Category>(
+      this.ServerLink + "/category/update",
+      category,
+      { headers: headers }
+    );
+  }
+
+  DeleteCategory(id, headers: HttpHeaders): Observable<any> {
+    return this.http.delete<Category>(
+      this.ServerLink + "/category/delete/" + id,
+      { headers: headers }
+    );
+  }
+
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.ServerLink + "/product/list");
+  }
+
+  getProductById(id): Observable<Product> {
+    return this.http.get<Product>(this.ServerLink + "/product/byId/" + id);
   }
 
   CreateProduct(
@@ -58,6 +81,42 @@ export class ApiService {
     return this.http.post<Category>(
       this.ServerLink + "/product/create",
       formData,
+      { headers: headers }
+    );
+  }
+
+  UpdateProduct(
+    proId: number,
+    proName: string,
+    price: number,
+    quantity: number,
+    headers: HttpHeaders,
+    categoryId?: number,
+    file?: File
+  ): Observable<any> {
+    let formData: FormData = new FormData();
+
+    formData.append("proId", proId.toString());
+    formData.append("proName", proName);
+    formData.append("price", price.toString());
+    formData.append("quantity", quantity.toString());
+    if (categoryId) {
+      formData.append("categoryId", categoryId.toString());
+    }
+    if (file) {
+      formData.append("file", file);
+    }
+
+    return this.http.put<Product>(
+      this.ServerLink + "/product/update",
+      formData,
+      { headers: headers }
+    );
+  }
+
+  DeleteProduct(id, headers: HttpHeaders): Observable<any> {
+    return this.http.delete<Product>(
+      this.ServerLink + "/product/delete/" + id,
       { headers: headers }
     );
   }

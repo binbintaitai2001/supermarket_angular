@@ -10,7 +10,7 @@
       name="name"
       #name="ngModel"
       required
-      [(ngModel)]="product.name"
+      [(ngModel)]="proName"
     />
     <small
       class="text-danger"
@@ -31,7 +31,7 @@
       name="price"
       #price="ngModel"
       required
-      [(ngModel)]="product.price"
+      [(ngModel)]="proPrice"
     />
     <small
       class="text-danger"
@@ -54,7 +54,7 @@
       name="quantity"
       #quantity="ngModel"
       required
-      [(ngModel)]="product.quantity"
+      [(ngModel)]="proQuantity"
     />
     <small
       class="text-danger"
@@ -78,7 +78,7 @@
       "
       name="categoryName"
       #categoryName="ngModel"
-      [(ngModel)]="product.category.id"
+      [(ngModel)]="proCategoryId"
     >
       <option *ngFor="let category of categories" [value]="category.id">
         {{ category.name }}
@@ -94,15 +94,21 @@
   </div>
 
   <div class="form-group">
-    <label>Product Image</label>
-    <input
-      type="file"
-      class="form-control"
-      name="file"
-      required
-      (change)="onFileSelected($event)"
-      #fileUpload
-    />
+    <div class="card">
+      <h5 class="card-header"><label>Product Image</label></h5>
+      <input
+        type="file"
+        class="form-control"
+        name="file"
+        required
+        draggable="true"
+        (change)="onFileSelected($event)"
+        #fileUpload
+      />
+      <div class="card-body">
+        <img [src]="previewString" alt="#" />
+      </div>
+    </div>
   </div>
 
   <button

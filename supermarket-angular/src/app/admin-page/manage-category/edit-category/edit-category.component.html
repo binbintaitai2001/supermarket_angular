@@ -1,1 +1,35 @@
-<p>edit-category works!</p>
+<div class="container">
+  <form #updateCategoryForm="ngForm" novalidate (ngSubmit)="handleSubmit()">
+    <div class="form-group">
+      <label>Category Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          name.touched && name.invalid && !updateCategoryForm.submitted
+        "
+        name="name"
+        #name="ngModel"
+        required
+        [(ngModel)]="category.name"
+        autofocus
+      />
+      <small
+        class="text-danger"
+        [class.d-none]="
+          name.untouched || name.valid || updateCategoryForm.submitted
+        "
+      >
+        category name is required
+      </small>
+    </div>
+
+    <button
+      [disabled]="updateCategoryForm.invalid"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Add Category
+    </button>
+  </form>
+</div>

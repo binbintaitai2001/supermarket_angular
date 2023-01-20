@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "src/app/api.service";
@@ -22,5 +23,26 @@ export class AllProductComponent implements OnInit {
     this.service.getProducts().subscribe((data) => {
       this.products = data;
     });
+  }
+
+  deleteProduct(id): void {
+    const token = localStorage.getItem("token").toString();
+    if (token !== null) {
+      const headers = new HttpHeaders().set("Authorization", token);
+
+      this.service.DeleteProduct(id, headers).subscribe(
+        (data) => {
+          console.log("no Error", data);
+          this.service.getProducts().subscribe((data) => {
+            this.products = data;
+          });
+        },
+        (error) => {
+          console.log("Error", error);
+        }
+      );
+    } else {
+      console.log("token expired");
+    }
   }
 }

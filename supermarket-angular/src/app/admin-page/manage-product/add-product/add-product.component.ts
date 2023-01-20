@@ -17,33 +17,30 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  private product: Product = new Product(
-    null,
-    "",
-    "",
-    0,
-    0,
-    new Category(null, "")
-  );
-
-  file: File;
-  proName: string;
-  price: number;
-  quantity: number;
-  categoryId: number;
+  file: File = null;
+  proName: string = "";
+  proPrice: number = 0;
+  proQuantity: number = 0;
+  proCategoryId: number = 0;
 
   private categories: Category[];
 
   onFileSelected(event) {
     this.file = event.target.files[0];
+    this.showImgPreview();
+  }
+
+  previewString: any = "";
+
+  showImgPreview() {
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.onloadend = () => {
+      this.previewString = reader.result;
+    };
   }
 
   handleSubmit(): void {
-    this.proName = this.product.name;
-    this.price = this.product.price;
-    this.quantity = this.product.quantity;
-    this.categoryId = this.product.category.id;
-
     const token = localStorage.getItem("token").toString();
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
@@ -52,9 +49,9 @@ export class AddProductComponent implements OnInit {
         .CreateProduct(
           this.file,
           this.proName,
-          this.price,
-          this.quantity,
-          this.categoryId,
+          this.proPrice,
+          this.proQuantity,
+          this.proCategoryId,
           headers
         )
         .subscribe(
