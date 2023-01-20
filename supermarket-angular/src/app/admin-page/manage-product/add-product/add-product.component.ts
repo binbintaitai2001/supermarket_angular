@@ -47,7 +47,6 @@ export class AddProductComponent implements OnInit {
     const token = localStorage.getItem("token").toString();
     if (token !== null) {
       const headers = new HttpHeaders()
-        // .set("content-type", "multipart/form-data")
         .set("Authorization", token);
 
       this.service

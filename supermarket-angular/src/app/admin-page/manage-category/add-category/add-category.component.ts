@@ -22,9 +22,7 @@ export class AddCategoryComponent implements OnInit {
   handleSubmit(): void {
     const token = localStorage.getItem("token").toString();
     if (token !== null) {
-      const headers = new HttpHeaders()
-        .set("content-type", "application/json")
-        .set("Authorization", token);
+      const headers = new HttpHeaders().set("Authorization", token);
 
       this.service.CreateCategiory(this.category, headers).subscribe(
         (data) => {
