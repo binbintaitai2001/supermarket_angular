@@ -25,12 +25,10 @@ export class ApiService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.ServerLink + "/product/list");
-    // return this.products;
   }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.ServerLink + "/category/list");
-    // return this.categories;
   }
 
   CreateCategiory(category: Category, headers: HttpHeaders): Observable<any> {

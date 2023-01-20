@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/api.service";
 import { Category } from "src/app/Entity/Category";
 import { HttpHeaders } from "@angular/common/http";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-add-category",
@@ -9,15 +10,15 @@ import { HttpHeaders } from "@angular/common/http";
   styleUrls: ["./add-category.component.css"],
 })
 export class AddCategoryComponent implements OnInit {
-  constructor(private service: ApiService) {
-    console.log("AddCategoryComponent");
-  }
+  constructor(
+    private service: ApiService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   category: Category = new Category(null, "");
 
-  ngOnInit() {
-    console.log("AddCategoryComponent");
-  }
+  ngOnInit() {}
 
   handleSubmit(): void {
     const token = localStorage.getItem("token").toString();
@@ -26,10 +27,11 @@ export class AddCategoryComponent implements OnInit {
 
       this.service.CreateCategiory(this.category, headers).subscribe(
         (data) => {
-          console.log(data);
+          console.log("no Error", data);
+          this.router.navigate(["/admin/category/all"]);
         },
         (errorObject) => {
-          console.log(errorObject);
+          console.log("Error", errorObject);
         }
       );
     } else {

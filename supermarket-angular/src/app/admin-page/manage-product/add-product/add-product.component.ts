@@ -46,8 +46,7 @@ export class AddProductComponent implements OnInit {
 
     const token = localStorage.getItem("token").toString();
     if (token !== null) {
-      const headers = new HttpHeaders()
-        .set("Authorization", token);
+      const headers = new HttpHeaders().set("Authorization", token);
 
       this.service
         .CreateProduct(
@@ -60,10 +59,11 @@ export class AddProductComponent implements OnInit {
         )
         .subscribe(
           (data) => {
-            console.log(data);
+            console.log("no Error", data);
+            this.router.navigate(["/admin/product/all"]);
           },
           (errorObject) => {
-            console.log(errorObject);
+            console.log("Error", errorObject);
           }
         );
     } else {
