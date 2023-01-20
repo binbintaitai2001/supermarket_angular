@@ -16,12 +16,15 @@ import { DashboardComponent } from "./admin-page/dashboard/dashboard.component";
 import { EditProductComponent } from "./admin-page/manage-product/edit-product/edit-product.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { RegisterComponent } from "./register/register.component";
+import { OrderPageComponent } from "./order-page/order-page.component";
+
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginPageComponent },
   { path: "profile", component: ProfileComponent },
+  { path: "order", component: OrderPageComponent},
   {
     path: "admin",
     component: AdminPageComponent,

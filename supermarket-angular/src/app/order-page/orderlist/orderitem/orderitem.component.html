@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col">
+      <img
+        src="/resource/11-cucumber-png-image-picture-download.png"
+        style="max-width: 120px"
+        alt="productImage"
+        class="img-thumbnail"
+      />
+    </div>
+    <div class="col">
+      <h3>Cucumber</h3>
+      <h4>20.000đ</h4>
+    </div>
+    <div class="col">
+      <div class="buttons_added" style="margin-top: 20px">
+        <input
+          (click)="decrement1()"
+          class="minus is-form"
+          style="width: 30px; background-color: rgba(255, 0, 72, 0.801)"
+          type="button"
+          value="-"
+        />
+        <input
+          id="demoInput1"
+          aria-label="quantity"
+          style="width: 80px"
+          class="input-qty"
+          max="100"
+          min="0"
+          type="number"
+          [(ngModel)]="index"
+        />
+        <input
+         (click)="increment1()"
+          class="plus is-form"
+          style="width: 30px; background-color: rgba(255, 0, 72, 0.801)"
+          type="button"
+          value="+"
+        />
+      </div>
+    </div>
+    <div class="col"><h3 style="margin-top: 20px">200.000đ</h3></div>
+  </div>
