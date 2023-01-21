@@ -20,7 +20,7 @@
         <button
           class="btn btn-primary"
           data-toggle="modal"
-          data-target="#buyModal"
+          [attr.data-target]="modalId + product.id"
         >
           Add to Cart
         </button>
@@ -32,7 +32,7 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="buyModal"
+  id="buyModal{{ product.id }}"
   tabindex="-1"
   role="dialog"
   aria-labelledby="exampleModalCenterTitle"

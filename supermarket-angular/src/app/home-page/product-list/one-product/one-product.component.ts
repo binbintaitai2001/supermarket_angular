@@ -15,6 +15,8 @@ export class OneProductComponent implements OnInit {
 
   @Input() product: Product;
 
+  modalId: string = "#buyModal";
+
   buyQuantity: number = 1;
 
   decreaseBuy(): void {
