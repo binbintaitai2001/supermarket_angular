@@ -20,8 +20,8 @@ export class AllCategoryComponent implements OnInit {
   private categories: Category[];
 
   ngOnInit() {
-    this.service.getCategories().subscribe((data) => {
-      this.categories = data;
+    this.service.getCategories().subscribe((res) => {
+      this.categories = res.data;
     });
   }
 
@@ -31,10 +31,10 @@ export class AllCategoryComponent implements OnInit {
       const headers = new HttpHeaders().set("Authorization", token);
 
       this.service.DeleteCategory(id, headers).subscribe(
-        (data) => {
-          console.log("no Error", data);
-          this.service.getCategories().subscribe((data) => {
-            this.categories = data;
+        (res) => {
+          console.log("no Error", res);
+          this.service.getCategories().subscribe((res) => {
+            this.categories = res.data;
           });
         },
         (error) => {

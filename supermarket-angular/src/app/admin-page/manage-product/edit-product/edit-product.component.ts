@@ -16,18 +16,18 @@ export class EditProductComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    service.getCategories().subscribe((data) => {
-      this.categories = data;
+    service.getCategories().subscribe((res) => {
+      this.categories = res.data;
     });
 
     this.route.params.subscribe((param) => {
-      service.getProductById(param.id).subscribe((data) => {
-        this.proName = data.name;
-        this.proPrice = data.price;
-        this.proQuantity = data.quantity;
-        this.proCategoryId = data.category.id;
-        this.productImg = data.img;
-        this.proId = data.id;
+      service.getProductById(param.id).subscribe((res) => {
+        this.proName = res.data.name;
+        this.proPrice = res.data.price;
+        this.proQuantity = res.data.quantity;
+        this.proCategoryId = res.data.category.id;
+        this.productImg = res.data.img;
+        this.proId = res.data.id;
       });
     });
   }
@@ -76,8 +76,8 @@ export class EditProductComponent implements OnInit {
           this.file
         )
         .subscribe(
-          (data) => {
-            console.log("no Error", data);
+          (res) => {
+            console.log("no Error", res);
             this.router.navigate(["/admin/product/all"]);
           },
           (errorObject) => {

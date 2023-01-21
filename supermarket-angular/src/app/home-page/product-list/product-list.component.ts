@@ -9,8 +9,9 @@ import { Product } from "src/app/Entity/Product";
 })
 export class ProductListComponent implements OnInit {
   constructor(private service: ApiService) {
-    service.getProducts().subscribe((data) => {
-      this.products = data;
+    service.getProducts().subscribe((res) => {
+      console.log(res);
+      this.products = res.data;
     });
   }
 

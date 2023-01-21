@@ -20,8 +20,8 @@ export class AllProductComponent implements OnInit {
   private products: Product[];
 
   ngOnInit() {
-    this.service.getProducts().subscribe((data) => {
-      this.products = data;
+    this.service.getProducts().subscribe((res) => {
+      this.products = res.data;
     });
   }
 
@@ -31,10 +31,10 @@ export class AllProductComponent implements OnInit {
       const headers = new HttpHeaders().set("Authorization", token);
 
       this.service.DeleteProduct(id, headers).subscribe(
-        (data) => {
-          console.log("no Error", data);
-          this.service.getProducts().subscribe((data) => {
-            this.products = data;
+        (res) => {
+          console.log("no Error", res);
+          this.service.getProducts().subscribe((res) => {
+            this.products = res.data;
           });
         },
         (error) => {

@@ -20,6 +20,10 @@ export class NavbarComponent implements OnInit {
         "isLoggedIn"
       ) as unknown as boolean;
     }
+    let token: string = localStorage.getItem("token");
+    if (token) {
+      this.isLoggedIn = true;
+    }
   }
   @Input() isUser: boolean;
 

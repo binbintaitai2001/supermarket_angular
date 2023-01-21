@@ -9,8 +9,8 @@ import { Category } from "src/app/Entity/Category";
 })
 export class SearchBarComponent implements OnInit {
   constructor(private service: ApiService) {
-    service.getCategories().subscribe((data) => {
-      this.categories = data;
+    service.getCategories().subscribe((res) => {
+      this.categories = res.data;
     });
   }
 

@@ -29,8 +29,10 @@ export class RegisterComponent implements OnInit {
 
   handleSubmit(): void {
     this.service.Register(this.user).subscribe(
-      (data) => {
-        console.log("no Error", data);
+      (res) => {
+        console.log("no Error", res);
+        alert(res.response.message);
+        this.router.navigate(["/login"]);
       },
       (errorObject) => {
         console.log("Error", errorObject);
