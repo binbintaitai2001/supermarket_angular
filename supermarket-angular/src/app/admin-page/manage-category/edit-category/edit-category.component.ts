@@ -22,9 +22,9 @@ export class EditCategoryComponent implements OnInit {
     this.route.params.subscribe((param) => {
       console.log(param);
       this.service.getCategoryById(param.id).subscribe(
-        (data) => {
-          console.log("no Error", data);
-          this.category = data;
+        (res) => {
+          console.log("no Error", res);
+          this.category = res.data;
         },
         (error) => {
           console.log("Error", error);
@@ -39,8 +39,8 @@ export class EditCategoryComponent implements OnInit {
       const headers = new HttpHeaders().set("Authorization", token);
 
       this.service.UpdateCategory(this.category, headers).subscribe(
-        (data) => {
-          console.log("no Error", data);
+        (res) => {
+          console.log("no Error", res);
           this.router.navigate(["/admin/category/all"]);
         },
         (errorObject) => {

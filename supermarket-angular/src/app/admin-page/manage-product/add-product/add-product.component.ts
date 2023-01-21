@@ -12,8 +12,8 @@ import { Product } from "src/app/Entity/Product";
 })
 export class AddProductComponent implements OnInit {
   constructor(private service: ApiService, private router: Router) {
-    service.getCategories().subscribe((data) => {
-      this.categories = data;
+    service.getCategories().subscribe((res) => {
+      this.categories = res.data;
     });
   }
 
@@ -55,8 +55,8 @@ export class AddProductComponent implements OnInit {
           headers
         )
         .subscribe(
-          (data) => {
-            console.log("no Error", data);
+          (res) => {
+            console.log("no Error", res);
             this.router.navigate(["/admin/product/all"]);
           },
           (errorObject) => {

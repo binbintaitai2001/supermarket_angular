@@ -6,6 +6,7 @@ import { LoginForm } from "./Entity/LoginForm";
 import { Product } from "./Entity/Product";
 import { HttpHeaders } from "@angular/common/http";
 import { User } from "./Entity/User";
+import { ResponseObjectEntity } from "./Entity/ResponseObJectEntity";
 
 @Injectable({
   providedIn: "root",
@@ -23,12 +24,16 @@ export class ApiService {
     return this.http.post<LoginForm>(this.ServerLink + "/login", loginForm);
   }
 
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.ServerLink + "/category/list");
+  getCategories(): Observable<ResponseObjectEntity<Category[]>> {
+    return this.http.get<ResponseObjectEntity<Category[]>>(
+      this.ServerLink + "/category/list"
+    );
   }
 
-  getCategoryById(id): Observable<Category> {
-    return this.http.get<Category>(this.ServerLink + "/category/byId/" + id);
+  getCategoryById(id): Observable<ResponseObjectEntity<Category>> {
+    return this.http.get<ResponseObjectEntity<Category>>(
+      this.ServerLink + "/category/byId/" + id
+    );
   }
 
   CreateCategiory(category: Category, headers: HttpHeaders): Observable<any> {
@@ -54,12 +59,16 @@ export class ApiService {
     );
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.ServerLink + "/product/list");
+  getProducts(): Observable<ResponseObjectEntity<Product[]>> {
+    return this.http.get<ResponseObjectEntity<Product[]>>(
+      this.ServerLink + "/product/list"
+    );
   }
 
-  getProductById(id): Observable<Product> {
-    return this.http.get<Product>(this.ServerLink + "/product/byId/" + id);
+  getProductById(id): Observable<ResponseObjectEntity<Product>> {
+    return this.http.get<ResponseObjectEntity<Product>>(
+      this.ServerLink + "/product/byId/" + id
+    );
   }
 
   CreateProduct(
@@ -118,6 +127,20 @@ export class ApiService {
     return this.http.delete<Product>(
       this.ServerLink + "/product/delete/" + id,
       { headers: headers }
+    );
+  }
+
+  AddToCart(
+    proId: number,
+    quantity: number,
+    headers: HttpHeaders
+  ): Observable<any> {
+    return this.http.post<any>(
+      this.ServerLink + "/cart/addToCart",
+      { proId: proId, quantity: quantity },
+      {
+        headers: headers,
+      }
     );
   }
 }
