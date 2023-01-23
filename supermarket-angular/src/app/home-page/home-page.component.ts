@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Product } from "../Entity/Product";
 
 @Component({
   selector: "app-home-page",
@@ -7,9 +8,13 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./home-page.component.css"],
 })
 export class HomePageComponent implements OnInit {
+  products: Product[] = [];
   constructor(private route: ActivatedRoute, private router: Router) {
     console.log("HomePageComponent");
   }
 
   ngOnInit() {}
+
+
+
 }

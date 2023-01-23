@@ -28,10 +28,10 @@ import { AddProductComponent } from './admin-page/manage-product/add-product/add
 import { ProfileComponent } from './profile/profile.component';
 import { EditProductComponent } from './admin-page/manage-product/edit-product/edit-product.component';
 import { RegisterComponent } from './register/register.component';
-import { OrderPageComponent } from './order-page/order-page.component';
-import { BillComponent } from './order-page/bill/bill.component';
-import { OrderlistComponent } from './order-page/orderlist/orderlist.component';
-import { OrderitemComponent } from './order-page/orderlist/orderitem/orderitem.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { BillComponent } from './cart-page/bill/bill.component';
+import { CartlistComponent } from './cart-page/cartlist/cartlist.component';
+import { CartitemComponent } from './cart-page/cartlist/cartitem/cartitem.component';
 
 @NgModule({
   declarations: [
@@ -59,10 +59,10 @@ import { OrderitemComponent } from './order-page/orderlist/orderitem/orderitem.c
     ProfileComponent,
     EditProductComponent,
     RegisterComponent,
-    OrderPageComponent,
+    CartPageComponent,
     BillComponent,
-    OrderlistComponent,
-    OrderitemComponent,
+    CartlistComponent,
+    CartitemComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

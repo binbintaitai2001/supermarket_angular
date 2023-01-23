@@ -1,12 +1,12 @@
 <div
   class="card border-secondary mb-3"
-  style="width: 100%; height: 80%; float: left"
+  style="width: 100%; height: 100%; float: left"
 >
   <div class="card-header" style="background-color: rgb(220, 245, 131)">
     <h4 style="color: red">Bill Info</h4>
   </div>
   <div class="card-body text-secondary">
-    <h5 class="card-title">Total: 200.000đ</h5>
+    <h5 class="card-title">Total: {{ cartTotal | currency : "VND" }}</h5>
     <input type="checkbox" id="ship" name="ship" value="ship" />
     <label for="ship"><h5>Ship to home</h5> </label><br />
     <h5 class="card-text">Total Pay:250.000đ</h5>

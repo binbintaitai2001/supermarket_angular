@@ -4,9 +4,13 @@
   </div>
   <div class="card-body">
     <div class="container text-center">
-     <app-orderitem></app-orderitem>
+     <div *ngFor="let i of cartitemlist">
+      <app-cartitem [cartitem]="i"></app-cartitem>
+     </div>
     </div>
+   
+  
   </div>
-
+ 
   <div class="card-footer text-muted"></div>
 </div>

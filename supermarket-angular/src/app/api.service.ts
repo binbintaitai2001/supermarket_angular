@@ -7,6 +7,7 @@ import { Product } from "./Entity/Product";
 import { HttpHeaders } from "@angular/common/http";
 import { User } from "./Entity/User";
 import { ResponseObjectEntity } from "./Entity/ResponseObJectEntity";
+import { Cartitem } from "./Entity/cartitem";
 
 @Injectable({
   providedIn: "root",
@@ -141,6 +142,15 @@ export class ApiService {
       {
         headers: headers,
       }
+    );
+  }
+
+  getCartItem(
+    headers: HttpHeaders
+  ): Observable<ResponseObjectEntity<Cartitem[]>> {
+    return this.http.get<ResponseObjectEntity<Cartitem[]>>(
+      "http://localhost:5000/cart/byUser",
+      { headers: headers }
     );
   }
 }

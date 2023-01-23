@@ -28,4 +28,7 @@ export class NavbarComponent implements OnInit {
   @Input() isUser: boolean;
 
   @Input() isLoggedIn: boolean;
+  gotoCart():void{
+    this.router.navigateByUrl("/cart")
+  }
 }
