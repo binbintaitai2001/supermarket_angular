@@ -19,13 +19,15 @@ export class RegisterComponent implements OnInit {
 
   RegisterFail: boolean = false;
 
+  reason: string = "";
+
   showPassword: boolean = false;
 
   showPass(): void {
     this.showPassword = !this.showPassword;
   }
 
-  user: User = new User("", "", "", "", "", "");
+  user: User = new User(0, "", "", "", "", "", "", "");
 
   handleSubmit(): void {
     this.service.Register(this.user).subscribe(
@@ -36,6 +38,8 @@ export class RegisterComponent implements OnInit {
       },
       (errorObject) => {
         console.log("Error", errorObject);
+        this.reason = errorObject.error.message;
+        this.RegisterFail = !this.RegisterFail;
       }
     );
   }

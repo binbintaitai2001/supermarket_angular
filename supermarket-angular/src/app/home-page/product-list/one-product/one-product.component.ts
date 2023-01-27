@@ -33,7 +33,7 @@ export class OneProductComponent implements OnInit {
   addToCart(): void {
     console.log("proId:", this.product.id);
     console.log("buyQuantity:", this.buyQuantity);
-    const token = localStorage.getItem("token").toString();
+    const token = sessionStorage.getItem("token").toString();
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
 

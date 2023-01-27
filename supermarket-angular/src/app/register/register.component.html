@@ -6,7 +6,7 @@
           class="alert alert-warning alert-dismissible fade show"
           role="alert"
         >
-          <strong>SignUp failed!</strong>
+          <strong>SignUp failed! {{ reason }}</strong>
           <button
             type="button"
             class="close"
@@ -17,7 +17,7 @@
           </button>
         </div>
       </div>
-      <h1>Sign Up</h1>
+      <h1 class="text-center">Sign Up</h1>
       <form #GlobalRegister="ngForm" (ngSubmit)="handleSubmit()">
         <div class="form-group">
           <div class="input-group">

@@ -12,19 +12,19 @@ import { EditCategoryComponent } from "./admin-page/manage-category/edit-categor
 import { AllCategoryComponent } from "./admin-page/manage-category/all-category/all-category.component";
 import { AllProductComponent } from "./admin-page/manage-product/all-product/all-product.component";
 import { AddProductComponent } from "./admin-page/manage-product/add-product/add-product.component";
-import { DashboardComponent } from "./admin-page/dashboard/dashboard.component";
 import { EditProductComponent } from "./admin-page/manage-product/edit-product/edit-product.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { RegisterComponent } from "./register/register.component";
 import { CartPageComponent } from "./cart-page/cart-page.component";
-
+import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
+import { RetypePasswordComponent } from "./retype-password/retype-password.component";
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginPageComponent },
   { path: "profile", component: ProfileComponent },
-  { path: "cart", component: CartPageComponent},
+  { path: "cart", component: CartPageComponent },
   {
     path: "admin",
     component: AdminPageComponent,
@@ -49,9 +49,10 @@ const routes: Routes = [
       },
       { path: "order", component: ManageOrderComponent },
       { path: "user", component: ManageUserComponent },
-      { path: "dashboard", component: DashboardComponent },
     ],
   },
+  { path: "forget-password", component: ForgetPasswordComponent },
+  { path: "retype-password", component: RetypePasswordComponent },
 ];
 
 @NgModule({

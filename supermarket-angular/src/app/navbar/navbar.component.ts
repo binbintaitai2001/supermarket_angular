@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
         "isLoggedIn"
       ) as unknown as boolean;
     }
-    let token: string = localStorage.getItem("token");
+    let token: string = sessionStorage.getItem("token");
     if (token) {
       this.isLoggedIn = true;
     }
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   @Input() isUser: boolean;
 
   @Input() isLoggedIn: boolean;
-  gotoCart():void{
-    this.router.navigateByUrl("/cart")
+  gotoCart(): void {
+    this.router.navigateByUrl("/cart");
   }
 }

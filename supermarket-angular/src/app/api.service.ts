@@ -18,11 +18,38 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   Register(user: User): Observable<any> {
-    return this.http.post<LoginForm>(this.ServerLink + "/signUp", user);
+    return this.http.post<LoginForm>(this.ServerLink + "/user/signUp", user);
   }
 
   Login(loginForm: LoginForm): Observable<any> {
-    return this.http.post<LoginForm>(this.ServerLink + "/login", loginForm);
+    return this.http.post<LoginForm>(
+      this.ServerLink + "/user/login",
+      loginForm
+    );
+  }
+
+  ResetPasswordUser(id, headers: HttpHeaders): Observable<any> {
+    return this.http.post<LoginForm>(
+      this.ServerLink + "/user/resetPassword/" + id,
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  ForgetPassword(email: string): Observable<any> {
+    sessionStorage.setItem("email", email);
+    return this.http.post<string>(this.ServerLink + "/user/forget-password", {
+      email: email,
+    });
+  }
+
+  ForgetPasswordRetype(password: string): Observable<any> {
+    let email: string = sessionStorage.getItem("email");
+    return this.http.post<string>(this.ServerLink + "/user/retype-password", {
+      email: email,
+      password: password,
+    });
   }
 
   getCategories(): Observable<ResponseObjectEntity<Category[]>> {
@@ -158,6 +185,13 @@ export class ApiService {
   ): Observable<ResponseObjectEntity<Cartitem[]>> {
     return this.http.get<ResponseObjectEntity<Cartitem[]>>(
       this.ServerLink + "/cart/byUser",
+      { headers: headers }
+    );
+  }
+
+  getAllUsers(headers: HttpHeaders): Observable<ResponseObjectEntity<User[]>> {
+    return this.http.get<ResponseObjectEntity<User[]>>(
+      this.ServerLink + "/user/list",
       { headers: headers }
     );
   }

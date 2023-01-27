@@ -1,1 +1,59 @@
-<p>manage-user works!</p>
+<div class="card">
+  <div
+    class="card-header d-flex justify-content-between text-success font-weight-bold"
+  >
+    User List
+    <a
+      title="Thêm"
+      class="btn btn-outline-success"
+      routerLink="/admin/product/add"
+      role="button"
+    >
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Add
+    </a>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">DOB</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="font-weight-bold">{{ user.id }}</td>
+          <td>{{ user.fullname }}</td>
+          <td>{{ user.dob | date : "dd/MM/yyyy" }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td class="text-right" style="width: 10%">
+            <a
+              title="Reset Password"
+              class="btn btn-sm btn-outline-success mr-2 text-success"
+              role="button"
+              (click)="resetPasswordUser(user.id)"
+            >
+              <i class="fa-solid fa-key"></i>
+            </a>
+            <a
+              title="Disable Account"
+              class="btn btn-sm btn-outline-danger text-danger"
+              role="button"
+              (click)="disableUser(user.id)"
+            >
+              <i class="fa-solid fa-ban"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -18,20 +18,21 @@ import { ManageProductComponent } from "./admin-page/manage-product/manage-produ
 import { ManageCategoryComponent } from "./admin-page/manage-category/manage-category.component";
 import { AddCategoryComponent } from "./admin-page/manage-category/add-category/add-category.component";
 import { AdminNavComponent } from "./admin-page/admin-nav/admin-nav.component";
-import { DashboardComponent } from "./admin-page/dashboard/dashboard.component";
 import { ManageOrderComponent } from "./admin-page/manage-order/manage-order.component";
 import { ManageUserComponent } from "./admin-page/manage-user/manage-user.component";
-import { EditCategoryComponent } from './admin-page/manage-category/edit-category/edit-category.component';
-import { AllCategoryComponent } from './admin-page/manage-category/all-category/all-category.component';
-import { AllProductComponent } from './admin-page/manage-product/all-product/all-product.component';
-import { AddProductComponent } from './admin-page/manage-product/add-product/add-product.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EditProductComponent } from './admin-page/manage-product/edit-product/edit-product.component';
-import { RegisterComponent } from './register/register.component';
-import { CartPageComponent } from './cart-page/cart-page.component';
-import { BillComponent } from './cart-page/bill/bill.component';
-import { CartlistComponent } from './cart-page/cartlist/cartlist.component';
-import { CartitemComponent } from './cart-page/cartlist/cartitem/cartitem.component';
+import { EditCategoryComponent } from "./admin-page/manage-category/edit-category/edit-category.component";
+import { AllCategoryComponent } from "./admin-page/manage-category/all-category/all-category.component";
+import { AllProductComponent } from "./admin-page/manage-product/all-product/all-product.component";
+import { AddProductComponent } from "./admin-page/manage-product/add-product/add-product.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { EditProductComponent } from "./admin-page/manage-product/edit-product/edit-product.component";
+import { RegisterComponent } from "./register/register.component";
+import { CartPageComponent } from "./cart-page/cart-page.component";
+import { BillComponent } from "./cart-page/bill/bill.component";
+import { CartlistComponent } from "./cart-page/cartlist/cartlist.component";
+import { CartitemComponent } from "./cart-page/cartlist/cartitem/cartitem.component";
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { RetypePasswordComponent } from './retype-password/retype-password.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,6 @@ import { CartitemComponent } from './cart-page/cartlist/cartitem/cartitem.compon
     ManageCategoryComponent,
     AddCategoryComponent,
     AdminNavComponent,
-    DashboardComponent,
     ManageOrderComponent,
     ManageUserComponent,
     EditCategoryComponent,
@@ -63,6 +63,8 @@ import { CartitemComponent } from './cart-page/cartlist/cartitem/cartitem.compon
     BillComponent,
     CartlistComponent,
     CartitemComponent,
+    ForgetPasswordComponent,
+    RetypePasswordComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

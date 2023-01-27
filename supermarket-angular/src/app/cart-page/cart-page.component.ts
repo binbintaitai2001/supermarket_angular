@@ -13,7 +13,7 @@ export class CartPageComponent implements OnInit {
   constructor(private apiservice: ApiService, private router: Router) {}
   cartitemarray: Cartitem[] = [];
   ngOnInit() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if (token !== null) {
       const header: HttpHeaders = new HttpHeaders().set("Authorization", token);
 

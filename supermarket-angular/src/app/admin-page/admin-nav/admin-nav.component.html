@@ -3,15 +3,6 @@
     class="collapse navbar-collapse d-flex justify-content-center align-items-center"
   >
     <a
-      [ngClass]="currentSelected == 'dashboard' ? selectedClass : nomalClass"
-      type="button"
-      (click)="SetSelected('dashboard')"
-      routerLink="/admin/dashboard"
-    >
-      DashBoard
-    </a>
-
-    <a
       [ngClass]="currentSelected == 'category' ? selectedClass : nomalClass"
       type="button"
       (click)="SetSelected('category')"

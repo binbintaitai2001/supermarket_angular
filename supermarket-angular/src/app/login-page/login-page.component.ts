@@ -26,14 +26,15 @@ export class LoginPageComponent implements OnInit {
   }
 
   LoginFail: boolean = false;
+  reason: string = "";
 
   handleSubmit(): void {
     this.service.Login(this.loginForm).subscribe(
       (data) => {
         console.log(data);
-        localStorage.setItem("token", data.Token);
+        sessionStorage.setItem("token", data.Token);
         if (data.Role === "ADMIN") {
-          this.router.navigate(["/admin"]);
+          this.router.navigate(["/admin/product/all"]);
         } else {
           if (data.Role === "USER") {
             this.router.navigate(["/"], {
@@ -44,6 +45,7 @@ export class LoginPageComponent implements OnInit {
       },
       (errorObject) => {
         console.log(errorObject.error);
+        this.reason = errorObject.error.message;
         this.LoginFail = true;
       }
     );

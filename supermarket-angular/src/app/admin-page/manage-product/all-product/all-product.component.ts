@@ -26,7 +26,7 @@ export class AllProductComponent implements OnInit {
   }
 
   deleteProduct(id): void {
-    const token = localStorage.getItem("token").toString();
+    const token = sessionStorage.getItem("token").toString();
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
 
