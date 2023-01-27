@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ApiService } from "src/app/api.service";
 import { Category } from "src/app/Entity/Category";
+import { ProductListComponent } from "../product-list/product-list.component";
 
 @Component({
   selector: "app-search-bar",
@@ -8,22 +9,20 @@ import { Category } from "src/app/Entity/Category";
   styleUrls: ["./search-bar.component.css"],
 })
 export class SearchBarComponent implements OnInit {
-  constructor(private service: ApiService) {
-    service.getCategories().subscribe((res) => {
-      this.categories = res.data;
-    });
-  }
+  constructor(private service: ApiService) {}
 
   ngOnInit() {}
 
-  private categories: Category[];
+  @Input() categories: Category[];
+  @Output() findByCategory: EventEmitter<string> = new EventEmitter<string>();
 
   private currentCategory = "All";
 
   normalClass = "nav-link";
   activeClass = "nav-link active";
 
-  changCategory(c: string): void {
+  changeCategory(c: string): void {
     this.currentCategory = c;
+    this.findByCategory.emit(this.currentCategory);
   }
 }

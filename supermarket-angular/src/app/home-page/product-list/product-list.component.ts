@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Injectable, Input, OnInit } from "@angular/core";
 import { ApiService } from "src/app/api.service";
 import { Product } from "src/app/Entity/Product";
 
@@ -8,17 +8,13 @@ import { Product } from "src/app/Entity/Product";
   styleUrls: ["./product-list.component.css"],
 })
 export class ProductListComponent implements OnInit {
-  constructor(private service: ApiService) {
-    service.getProducts().subscribe((res) => {
-      console.log(res);
-      this.products = res.data;
-    });
-  }
+  constructor() {}
 
   ngOnInit() {}
 
-  private products: Product[] = [];
+  @Input() products: Product[] = [];
 
-
-
+  public trackPro(index: number, item: Product) {
+    return item.id;
+  }
 }

@@ -15,19 +15,27 @@
     <div class="row" id="shopNow">
       <ul class="nav nav-pills mt-3">
         <li class="nav-item">
-          <p class="nav-link text-dark" href="#">Categories :</p>
+          <p class="nav-link" href="#">Categories :</p>
+        </li>
+        <li class="nav-item">
+          <div
+            [class]="currentCategory === 'All' ? activeClass : normalClass"
+            data-bs-toggle="pill"
+            (click)="changeCategory('All')"
+          >
+            All
+          </div>
         </li>
         <li class="nav-item" *ngFor="let category of categories">
-          <a
+          <div
             [class]="
               currentCategory === category.name ? activeClass : normalClass
             "
             data-bs-toggle="pill"
-            href="#"
-            (click)="changCategory(category.name)"
+            (click)="changeCategory(category.name)"
           >
             {{ category.name }}
-          </a>
+          </div>
         </li>
       </ul>
     </div>

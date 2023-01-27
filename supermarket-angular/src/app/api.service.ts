@@ -66,6 +66,14 @@ export class ApiService {
     );
   }
 
+  getProductsByCategoryId(
+    categoryId
+  ): Observable<ResponseObjectEntity<Product[]>> {
+    return this.http.get<ResponseObjectEntity<Product[]>>(
+      this.ServerLink + "/product/bycatId/" + categoryId
+    );
+  }
+
   getProductById(id): Observable<ResponseObjectEntity<Product>> {
     return this.http.get<ResponseObjectEntity<Product>>(
       this.ServerLink + "/product/byId/" + id

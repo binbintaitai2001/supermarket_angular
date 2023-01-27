@@ -1,5 +1,8 @@
 <app-navbar [isUser]="true"></app-navbar>
 <app-banner></app-banner>
-<app-search-bar></app-search-bar>
-<app-product-list></app-product-list>
+<app-search-bar
+  [categories]="categories"
+  (findByCategory)="findByCategory($event)"
+></app-search-bar>
+<app-product-list [products]="products"></app-product-list>
 <app-footer></app-footer>

@@ -4,7 +4,7 @@
     <!-- one product -->
     <div
       class="col-lg-4 col-small-2 mb-5 d-flex justify-content-center"
-      *ngFor="let product of products"
+      *ngFor="let product of products; trackBy: trackPro"
     >
       <app-one-product [product]="product"> </app-one-product>
     </div>
