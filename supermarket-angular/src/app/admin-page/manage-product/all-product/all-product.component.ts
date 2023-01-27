@@ -39,6 +39,9 @@ export class AllProductComponent implements OnInit {
         },
         (error) => {
           console.log("Error", error);
+          if (error.error.response === "This Access Token Expired!") {
+            this.router.navigate(["/login"]);
+          }
         }
       );
     } else {

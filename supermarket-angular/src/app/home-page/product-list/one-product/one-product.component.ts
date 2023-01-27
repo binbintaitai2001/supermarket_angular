@@ -1,5 +1,6 @@
 import { HttpHeaders } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ApiService } from "src/app/api.service";
 import { Product } from "src/app/Entity/Product";
 
@@ -9,7 +10,7 @@ import { Product } from "src/app/Entity/Product";
   styleUrls: ["./one-product.component.css"],
 })
 export class OneProductComponent implements OnInit {
-  constructor(private service: ApiService) {}
+  constructor(private service: ApiService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -41,10 +42,12 @@ export class OneProductComponent implements OnInit {
         .subscribe(
           (res) => {
             console.log("no Error", res);
-            // this.router.navigate(["/admin/product/all"]);
           },
           (errorObject) => {
             console.log("Error", errorObject);
+            if (errorObject.error.response === "This Access Token Expired!") {
+              this.router.navigate(["/login"]);
+            }
           }
         );
     } else {

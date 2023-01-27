@@ -82,6 +82,9 @@ export class EditProductComponent implements OnInit {
           },
           (errorObject) => {
             console.log("Error", errorObject);
+            if (errorObject.error.response === "This Access Token Expired!") {
+              this.router.navigate(["/login"]);
+            }
           }
         );
     } else {
