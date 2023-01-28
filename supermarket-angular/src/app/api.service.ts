@@ -39,14 +39,16 @@ export class ApiService {
 
   ForgetPassword(email: string): Observable<any> {
     sessionStorage.setItem("email", email);
-    return this.http.post<string>(this.ServerLink + "/user/forget-password", {
-      email: email,
-    });
+    return this.http.post<string>(
+      this.ServerLink + "/user/forget-password",
+      email
+    );
   }
 
-  ForgetPasswordRetype(password: string): Observable<any> {
+  ForgetPasswordRetype(password: string, code: string): Observable<any> {
     let email: string = sessionStorage.getItem("email");
     return this.http.post<string>(this.ServerLink + "/user/retype-password", {
+      code: code,
       email: email,
       password: password,
     });

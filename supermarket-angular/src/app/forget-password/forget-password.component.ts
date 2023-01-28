@@ -14,13 +14,21 @@ export class ForgetPasswordComponent implements OnInit {
 
   email: string = "";
 
+  failed: boolean = false;
+  reason: string = "";
+
   handleSubmit(): void {
     this.service.ForgetPassword(this.email).subscribe(
       (res) => {
         console.log("no Error", res);
+        if (res.response.result) {
+          this.router.navigate(["/retype-password"]);
+        }
       },
       (error) => {
         console.log("Error", error);
+        this.reason = error.error.message;
+        this.failed = !this.failed;
       }
     );
   }
