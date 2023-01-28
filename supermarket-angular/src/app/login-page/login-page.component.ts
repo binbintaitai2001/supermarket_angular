@@ -37,9 +37,12 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(["/admin/product/all"]);
         } else {
           if (data.Role === "USER") {
-            this.router.navigate(["/"], {
-              queryParams: { isUser: true, isLoggedIn: true },
-            });
+            this.router.navigate(
+              ["/"]
+              // , {
+              //   queryParams: { isUser: true, isLoggedIn: true },
+              // }
+            );
           }
         }
       },

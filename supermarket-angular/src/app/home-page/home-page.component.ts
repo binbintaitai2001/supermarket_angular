@@ -50,4 +50,16 @@ export class HomePageComponent implements OnInit {
       });
     }
   }
+
+  findByName(event): void {
+    console.log(event);
+    if (event === "All") {
+      this.getProducts();
+    } else {
+      this.service.getProductsByName(event).subscribe((res) => {
+        console.log(res);
+        this.products = res.data;
+      });
+    }
+  }
 }

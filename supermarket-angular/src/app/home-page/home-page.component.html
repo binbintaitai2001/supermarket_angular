@@ -3,6 +3,7 @@
 <app-search-bar
   [categories]="categories"
   (findByCategory)="findByCategory($event)"
+  (findByName)="findByName($event)"
 ></app-search-bar>
 <app-product-list [products]="products"></app-product-list>
 <app-footer></app-footer>

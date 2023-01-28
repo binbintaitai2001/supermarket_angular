@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ApiService } from "../api.service";
 
 @Component({
   selector: "app-navbar",
@@ -7,7 +8,11 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ApiService
+  ) {}
 
   ngOnInit() {
     if (this.route.snapshot.queryParamMap.get("isUser") !== null) {
@@ -30,5 +35,19 @@ export class NavbarComponent implements OnInit {
   @Input() isLoggedIn: boolean;
   gotoCart(): void {
     this.router.navigateByUrl("/cart");
+  }
+
+  handleLogOut(): void {
+    this.service.Logout().subscribe(
+      (res) => {
+        console.log("no Error", res);
+        sessionStorage.clear();
+        this.isLoggedIn = !this.isLoggedIn;
+        alert("logged out !!!");
+      },
+      (error) => {
+        console.log("Error", error);
+      }
+    );
   }
 }

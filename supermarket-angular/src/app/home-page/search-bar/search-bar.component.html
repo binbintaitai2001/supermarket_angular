@@ -1,14 +1,30 @@
 <div class="container">
   <nav class="navbar bg-light row">
     <div class="container-fluid">
-      <form class="d-flex w-100" role="search">
+      <form
+        #searchForm="ngForm"
+        class="d-flex w-100"
+        role="search"
+        (submit)="handleSubmit()"
+      >
         <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          name="keywords"
+          id="keywords"
+          #Keyword
+          [(ngModel)]="keywords"
+          required
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button
+          [disabled]="searchForm.invalid"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
     </div>
     <!-- categories -->

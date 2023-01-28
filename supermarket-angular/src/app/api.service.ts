@@ -28,6 +28,10 @@ export class ApiService {
     );
   }
 
+  Logout(): Observable<any> {
+    return this.http.get<any>(this.ServerLink + "/user/logout");
+  }
+
   ResetPasswordUser(id, headers: HttpHeaders): Observable<any> {
     return this.http.post<LoginForm>(
       this.ServerLink + "/user/resetPassword/" + id,
@@ -100,6 +104,12 @@ export class ApiService {
   ): Observable<ResponseObjectEntity<Product[]>> {
     return this.http.get<ResponseObjectEntity<Product[]>>(
       this.ServerLink + "/product/bycatId/" + categoryId
+    );
+  }
+
+  getProductsByName(name): Observable<ResponseObjectEntity<Product[]>> {
+    return this.http.get<ResponseObjectEntity<Product[]>>(
+      this.ServerLink + "/product/byName?name=" + name
     );
   }
 

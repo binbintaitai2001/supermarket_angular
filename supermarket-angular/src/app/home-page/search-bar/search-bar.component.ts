@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ApiService } from "src/app/api.service";
 import { Category } from "src/app/Entity/Category";
-import { ProductListComponent } from "../product-list/product-list.component";
 
 @Component({
   selector: "app-search-bar",
@@ -15,8 +14,11 @@ export class SearchBarComponent implements OnInit {
 
   @Input() categories: Category[];
   @Output() findByCategory: EventEmitter<string> = new EventEmitter<string>();
+  @Output() findByName: EventEmitter<string> = new EventEmitter<string>();
 
   private currentCategory = "All";
+
+  private keywords: string = "";
 
   normalClass = "nav-link";
   activeClass = "nav-link active";
@@ -24,5 +26,10 @@ export class SearchBarComponent implements OnInit {
   changeCategory(c: string): void {
     this.currentCategory = c;
     this.findByCategory.emit(this.currentCategory);
+  }
+
+  handleSubmit(): void {
+    console.log(this.keywords);
+    this.findByName.emit(this.keywords);
   }
 }

@@ -20,12 +20,13 @@
         </li>
       </ul>
       <h1>SUPER MARKET</h1>
-      <div>
+      <div class="d-flex">
         <button
           class="btn btn-no-outline p-3 ms-3"
           type="submit"
-          *ngIf="isUser"
+          *ngIf="isUser && isLoggedIn"
           (click)="gotoCart()"
+          title="cart"
         >
           <img
             src="../assets/product/cart.png"
@@ -37,14 +38,27 @@
             >4</span
           >
         </button>
-        <a
+        <div
           *ngIf="isLoggedIn; else login"
-          class="btn btn-outline-success p-3 ms-3"
-          routerLink="/profile"
+          class="d-flex justify-content-between"
+          title="profile"
         >
-          <span class="text-dark">Account </span>
-          <img src="../assets/product/userImg.png" alt="Logo" />
-        </a>
+          <a class="btn btn-outline-success p-3 ms-3" routerLink="/profile">
+            <span class="text-dark">Account </span>
+            <img src="../assets/product/userImg.png" alt="Logo" />
+          </a>
+          <div
+            class="d-flex justify-content-center align-items-center"
+            style="width: 100px; cursor: pointer"
+            title="Log Out"
+            (click)="handleLogOut()"
+          >
+            <i
+              class="fa-solid fa-right-from-bracket"
+              style="font-size: 32px"
+            ></i>
+          </div>
+        </div>
         <ng-template #login>
           <a class="btn btn-outline-primary p-3 ms-3" routerLink="login">
             <span class="text-dark">Login </span>
