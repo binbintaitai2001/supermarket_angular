@@ -1,12 +1,35 @@
-<ul class="list-group list-group-flush">
+<ul
+  class="list-group list-group-flush d-flex justify-content-center"
+  style="border-right: 1px solid black; height: 100%"
+>
   <li class="list-group-item">
-    <a href="/profile/personal">Personal Information</a>
+    <a
+      routerLink="/profile/personal"
+      [ngClass]="currentSelected == 'personal' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('personal')"
+      ><i class="fa-regular fa-user"></i> Personal Information
+    </a>
   </li>
   <li class="list-group-item">
-    <a href="/profile/change-password">Change Password</a>
+    <a
+      routerLink="/profile/change-password"
+      [ngClass]="
+        currentSelected == 'change-password' ? selectedClass : nomalClass
+      "
+      type="button"
+      (click)="SetSelected('change-password')"
+      ><i class="fa-solid fa-lock"></i> Change Password
+    </a>
   </li>
   <li class="list-group-item d-flex justify-content-between">
-    <a href="/profile/your-orders">Your Orders</a>
-    <span class="badge bg-primary rounded-pill text-light">14</span>
+    <a
+      routerLink="/profile/your-orders"
+      [ngClass]="currentSelected == 'your-orders' ? selectedClass : nomalClass"
+      type="button"
+      (click)="SetSelected('your-orders')"
+      ><i class="fa-solid fa-box"></i> Your Orders
+      <span class="badge bg-danger rounded-pill text-light ml-1">14</span></a
+    >
   </li>
 </ul>

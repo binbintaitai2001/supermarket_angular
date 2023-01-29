@@ -1,1 +1,227 @@
-<p>personal works!</p>
+<div class="card mt-5 mb-5">
+  <div *ngIf="ChangeProfileFail">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Failed! {{ reason }}</strong>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="card-header d-flex justify-content-between text-success font-weight-bold"
+  >
+    Personal Information
+    <div
+      *ngIf="!isEditing; else SaveInfo"
+      title="Edit Your Information"
+      class="btn btn-outline-success"
+      (click)="activeEdit()"
+      role="button"
+    >
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    </div>
+    <ng-template #SaveInfo>
+      <button
+        title="Edit Your Information"
+        class="btn btn-outline-success"
+        (click)="saveInfo()"
+        role="button"
+        [disabled]="PersonalForm.invalid"
+      >
+        <i class="fa-solid fa-check"></i>
+        Save
+      </button>
+    </ng-template>
+  </div>
+  <div class="card-body">
+    <form #PersonalForm="ngForm" (ngSubmit)="(functionName)">
+      <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" style="width: 25%">Name</th>
+            <th scope="col">Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="col" style="width: 25%">Full Name</th>
+            <th scope="col">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    [disabled]="!isEditing"
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="FullName"
+                    name="FullName"
+                    autofocus
+                    placeholder="Full Name"
+                    #FullName="ngModel"
+                    required
+                    [(ngModel)]="user.fullname"
+                    [class.is-invalid]="
+                      FullName.touched &&
+                      FullName.invalid &&
+                      !PersonalForm.submitted
+                    "
+                  />
+                </div>
+                <small
+                  class="text-danger"
+                  [class.d-none]="
+                    FullName.untouched ||
+                    FullName.valid ||
+                    PersonalForm.submitted
+                  "
+                >
+                  Full Name is required
+                </small>
+              </div>
+            </th>
+          </tr>
+
+          <tr>
+            <th scope="col" style="width: 25%">Address</th>
+            <th scope="col">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    [disabled]="!isEditing"
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="Address"
+                    name="Address"
+                    autofocus
+                    placeholder="Address"
+                    #Address="ngModel"
+                    required
+                    [(ngModel)]="user.address"
+                    [class.is-invalid]="
+                      Address.touched &&
+                      Address.invalid &&
+                      !PersonalForm.submitted
+                    "
+                  />
+                </div>
+                <small
+                  class="text-danger"
+                  [class.d-none]="
+                    Address.untouched || Address.valid || PersonalForm.submitted
+                  "
+                >
+                  Address is required
+                </small>
+              </div>
+            </th>
+          </tr>
+
+          <tr>
+            <th scope="col" style="width: 25%">DoB <br />(mm/dd/yyyy)</th>
+            <th scope="col">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    [disabled]="!isEditing"
+                    type="date"
+                    class="form-control form-control-lg"
+                    id="DoB"
+                    name="DoB"
+                    autofocus
+                    placeholder="DoB"
+                    #DoB="ngModel"
+                    required
+                    [(ngModel)]="user.dob"
+                    [class.is-invalid]="
+                      DoB.touched && DoB.invalid && !PersonalForm.submitted
+                    "
+                  />
+                </div>
+                <small
+                  class="text-danger"
+                  [class.d-none]="
+                    DoB.untouched || DoB.valid || PersonalForm.submitted
+                  "
+                >
+                  Date of Birth is required
+                </small>
+              </div>
+            </th>
+          </tr>
+
+          <tr>
+            <th scope="col" style="width: 25%">Phone</th>
+            <th scope="col">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    [disabled]="!isEditing"
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="Phone"
+                    name="Phone"
+                    autofocus
+                    placeholder="Phone"
+                    #Phone="ngModel"
+                    required
+                    [(ngModel)]="user.phone"
+                    [class.is-invalid]="
+                      Phone.touched && Phone.invalid && !PersonalForm.submitted
+                    "
+                  />
+                </div>
+                <small
+                  class="text-danger"
+                  [class.d-none]="
+                    Phone.untouched || Phone.valid || PersonalForm.submitted
+                  "
+                >
+                  Phone is required
+                </small>
+              </div>
+            </th>
+          </tr>
+
+          <tr>
+            <th scope="col" style="width: 25%">Email</th>
+            <th scope="col">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    [disabled]="!isEditing"
+                    type="email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    class="form-control form-control-lg"
+                    id="Email"
+                    name="Email"
+                    autofocus
+                    placeholder="Email"
+                    #Email="ngModel"
+                    required
+                    [(ngModel)]="user.email"
+                    [class.is-invalid]="
+                      Email.touched && Email.invalid && !PersonalForm.submitted
+                    "
+                  />
+                </div>
+                <small
+                  class="text-danger"
+                  [class.d-none]="
+                    Email.untouched || Email.valid || PersonalForm.submitted
+                  "
+                >
+                  Email is required
+                </small>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>

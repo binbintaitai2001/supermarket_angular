@@ -8,6 +8,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { User } from "./Entity/User";
 import { ResponseObjectEntity } from "./Entity/ResponseObJectEntity";
 import { Cartitem } from "./Entity/cartitem";
+import { UpdateUserForm } from "./Entity/UpdateUserForm";
 
 @Injectable({
   providedIn: "root",
@@ -25,6 +26,36 @@ export class ApiService {
     return this.http.post<LoginForm>(
       this.ServerLink + "/user/login",
       loginForm
+    );
+  }
+
+  getProfile(headers: HttpHeaders): Observable<ResponseObjectEntity<User>> {
+    return this.http.get<ResponseObjectEntity<User>>(
+      this.ServerLink + "/user/profile",
+      { headers: headers }
+    );
+  }
+
+  updateProfile(
+    headers: HttpHeaders,
+    updateUserForm: UpdateUserForm
+  ): Observable<ResponseObjectEntity<UpdateUserForm>> {
+    return this.http.put<ResponseObjectEntity<UpdateUserForm>>(
+      this.ServerLink + "/user/update",
+      updateUserForm,
+      { headers: headers }
+    );
+  }
+
+  updatePassword(
+    headers: HttpHeaders,
+    oldPassword: string,
+    newPassword: string
+  ): Observable<ResponseObjectEntity<UpdateUserForm>> {
+    return this.http.put<ResponseObjectEntity<UpdateUserForm>>(
+      this.ServerLink + "/user/change-password",
+      { oldPassword: oldPassword, newPassword: newPassword },
+      { headers: headers }
     );
   }
 
