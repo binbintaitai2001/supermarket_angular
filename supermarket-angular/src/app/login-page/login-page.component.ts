@@ -34,9 +34,11 @@ export class LoginPageComponent implements OnInit {
         console.log(data);
         sessionStorage.setItem("token", data.Token);
         if (data.Role === "ADMIN") {
+          sessionStorage.setItem("isUser", "false");
           this.router.navigate(["/admin/product/all"]);
         } else {
           if (data.Role === "USER") {
+            sessionStorage.setItem("isUser", "true");
             this.router.navigate(
               ["/"]
               // , {

@@ -1,0 +1,8 @@
+li {
+  border: none;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: aqua;
+}

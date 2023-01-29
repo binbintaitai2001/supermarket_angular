@@ -9,7 +9,7 @@ import { ProductListComponent } from "./home-page/product-list/product-list.comp
 import { NavbarComponent } from "./navbar/navbar.component";
 import { BannerComponent } from "./home-page/banner/banner.component";
 import { SearchBarComponent } from "./home-page/search-bar/search-bar.component";
-import { FooterComponent } from "./home-page/footer/footer.component";
+import { FooterComponent } from "./footer/footer.component";
 import { OneProductComponent } from "./home-page/product-list/one-product/one-product.component";
 import { HttpClientModule } from "@angular/common/http";
 import { LoginPageComponent } from "./login-page/login-page.component";
@@ -31,8 +31,12 @@ import { CartPageComponent } from "./cart-page/cart-page.component";
 import { BillComponent } from "./cart-page/bill/bill.component";
 import { CartlistComponent } from "./cart-page/cartlist/cartlist.component";
 import { CartitemComponent } from "./cart-page/cartlist/cartitem/cartitem.component";
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { RetypePasswordComponent } from './retype-password/retype-password.component';
+import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
+import { RetypePasswordComponent } from "./retype-password/retype-password.component";
+import { NavProfileComponent } from "./profile/nav-profile/nav-profile.component";
+import { PersonalComponent } from './profile/personal/personal.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { YourOrdersComponent } from './profile/your-orders/your-orders.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { RetypePasswordComponent } from './retype-password/retype-password.compo
     CartitemComponent,
     ForgetPasswordComponent,
     RetypePasswordComponent,
+    NavProfileComponent,
+    PersonalComponent,
+    ChangePasswordComponent,
+    YourOrdersComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

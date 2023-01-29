@@ -15,24 +15,20 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.route.snapshot.queryParamMap.get("isUser") !== null) {
-      this.isUser = this.route.snapshot.queryParamMap.get(
-        "isUser"
-      ) as unknown as boolean;
-    }
-    if (this.route.snapshot.queryParamMap.get("isLoggedIn") !== null) {
-      this.isLoggedIn = this.route.snapshot.queryParamMap.get(
-        "isLoggedIn"
-      ) as unknown as boolean;
+    let checkUser = sessionStorage.getItem("isUser");
+    if (checkUser) {
+      if (checkUser === "true") {
+        this.isUser = true;
+      }
     }
     let token: string = sessionStorage.getItem("token");
     if (token) {
       this.isLoggedIn = true;
     }
   }
-  @Input() isUser: boolean;
+  @Input() isUser: boolean = false;
 
-  @Input() isLoggedIn: boolean;
+  @Input() isLoggedIn: boolean = false;
   gotoCart(): void {
     this.router.navigateByUrl("/cart");
   }
@@ -44,6 +40,7 @@ export class NavbarComponent implements OnInit {
         sessionStorage.clear();
         this.isLoggedIn = !this.isLoggedIn;
         alert("logged out !!!");
+        this.router.navigateByUrl("/");
       },
       (error) => {
         console.log("Error", error);

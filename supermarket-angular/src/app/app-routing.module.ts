@@ -18,12 +18,32 @@ import { RegisterComponent } from "./register/register.component";
 import { CartPageComponent } from "./cart-page/cart-page.component";
 import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
 import { RetypePasswordComponent } from "./retype-password/retype-password.component";
+import { ChangePasswordComponent } from "./profile/change-password/change-password.component";
+import { YourOrdersComponent } from "./profile/your-orders/your-orders.component";
+import { PersonalComponent } from "./profile/personal/personal.component";
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginPageComponent },
-  { path: "profile", component: ProfileComponent },
+  {
+    path: "profile",
+    component: ProfileComponent,
+    children: [
+      {
+        path: "personal",
+        component: PersonalComponent,
+      },
+      {
+        path: "change-password",
+        component: ChangePasswordComponent,
+      },
+      {
+        path: "your-orders",
+        component: YourOrdersComponent,
+      },
+    ],
+  },
   { path: "cart", component: CartPageComponent },
   {
     path: "admin",

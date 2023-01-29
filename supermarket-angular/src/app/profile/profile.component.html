@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+
+<div class="container profile_page_body d-flex justify-content-between">
+  <div class="col-3" style="border-right: 1px solid black">
+    <app-nav-profile></app-nav-profile>
+  </div>
+
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-footer></app-footer>
