@@ -1,5 +1,6 @@
 import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { ApiService } from "../api.service";
 import { Cartitem } from "../Entity/cartitem";
@@ -10,7 +11,13 @@ import { Cartitem } from "../Entity/cartitem";
   styleUrls: ["./cart-page.component.css"],
 })
 export class CartPageComponent implements OnInit {
-  constructor(private apiservice: ApiService, private router: Router) {}
+  constructor(
+    private apiservice: ApiService,
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("SuperMarket | Cart");
+  }
   cartitemarray: Cartitem[] = [];
 
   backtoLogin(): void {

@@ -21,6 +21,7 @@ import { RetypePasswordComponent } from "./retype-password/retype-password.compo
 import { ChangePasswordComponent } from "./profile/change-password/change-password.component";
 import { YourOrdersComponent } from "./profile/your-orders/your-orders.component";
 import { PersonalComponent } from "./profile/personal/personal.component";
+import { NotFoundPageComponent } from "./not-found-page/not-found-page.component";
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
@@ -73,6 +74,8 @@ const routes: Routes = [
   },
   { path: "forget-password", component: ForgetPasswordComponent },
   { path: "retype-password", component: RetypePasswordComponent },
+  //Wild Card Route for 404 request -- must be last place
+  { path: "**", component: NotFoundPageComponent },
 ];
 
 @NgModule({

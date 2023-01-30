@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiService } from "../api.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-retype-password",
@@ -8,7 +9,13 @@ import { ApiService } from "../api.service";
   styleUrls: ["./retype-password.component.css"],
 })
 export class RetypePasswordComponent implements OnInit {
-  constructor(private service: ApiService, private router: Router) {}
+  constructor(
+    private service: ApiService,
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("SuperMarket | Admin");
+  }
 
   ngOnInit() {}
 

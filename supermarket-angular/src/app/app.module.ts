@@ -37,6 +37,7 @@ import { NavProfileComponent } from "./profile/nav-profile/nav-profile.component
 import { PersonalComponent } from './profile/personal/personal.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { YourOrdersComponent } from './profile/your-orders/your-orders.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { YourOrdersComponent } from './profile/your-orders/your-orders.component
     PersonalComponent,
     ChangePasswordComponent,
     YourOrdersComponent,
+    NotFoundPageComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "../api.service";
 import { LoginForm } from "../Entity/LoginForm";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-login-page",
@@ -12,8 +13,11 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ApiService
-  ) {}
+    private service: ApiService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("SuperMarket | Login");
+  }
 
   loginForm: LoginForm = new LoginForm("", "");
 

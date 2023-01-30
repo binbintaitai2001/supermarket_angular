@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "../api.service";
 import { User } from "../Entity/User";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-register",
@@ -12,8 +13,11 @@ export class RegisterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ApiService
-  ) {}
+    private service: ApiService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("SuperMarket | Admin");
+  }
 
   ngOnInit() {}
 

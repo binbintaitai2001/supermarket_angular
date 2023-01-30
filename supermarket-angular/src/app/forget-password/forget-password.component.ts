@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiService } from "../api.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-forget-password",
@@ -8,7 +9,13 @@ import { ApiService } from "../api.service";
   styleUrls: ["./forget-password.component.css"],
 })
 export class ForgetPasswordComponent implements OnInit {
-  constructor(private service: ApiService, private router: Router) {}
+  constructor(
+    private service: ApiService,
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("SuperMarket | Forget Password");
+  }
 
   ngOnInit() {}
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "../api.service";
 import { Category } from "../Entity/Category";
 import { Product } from "../Entity/Product";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-home-page",
@@ -13,9 +14,10 @@ export class HomePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ApiService
+    private service: ApiService,
+    private titleService: Title
   ) {
-    console.log("HomePageComponent");
+    this.titleService.setTitle("SuperMarket | Home");
   }
 
   ngOnInit() {
