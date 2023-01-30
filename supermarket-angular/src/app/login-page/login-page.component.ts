@@ -32,6 +32,7 @@ export class LoginPageComponent implements OnInit {
     this.service.Login(this.loginForm).subscribe(
       (data) => {
         console.log(data);
+        sessionStorage.setItem("userName", data.userName);
         sessionStorage.setItem("token", data.Token);
         if (data.Role === "ADMIN") {
           sessionStorage.setItem("isUser", "false");

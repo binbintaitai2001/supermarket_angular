@@ -25,10 +25,18 @@ export class NavbarComponent implements OnInit {
     if (token) {
       this.isLoggedIn = true;
     }
+
+    let userName = sessionStorage.getItem("userName");
+    if (userName) {
+      this.userName = userName;
+    }
   }
   @Input() isUser: boolean = false;
 
   @Input() isLoggedIn: boolean = false;
+
+  private userName: string = "";
+
   gotoCart(): void {
     this.router.navigateByUrl("/cart");
   }
