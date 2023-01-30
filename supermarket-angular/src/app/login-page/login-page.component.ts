@@ -35,16 +35,17 @@ export class LoginPageComponent implements OnInit {
         sessionStorage.setItem("token", data.Token);
         if (data.Role === "ADMIN") {
           sessionStorage.setItem("isUser", "false");
-          this.router.navigate(["/admin/product/all"]);
+          let returnUrl = sessionStorage.getItem("returnUrl");
+          if (returnUrl) {
+            this.router.navigate([returnUrl]);
+          } else this.router.navigate(["/admin/product/all"]);
         } else {
           if (data.Role === "USER") {
             sessionStorage.setItem("isUser", "true");
-            this.router.navigate(
-              ["/"]
-              // , {
-              //   queryParams: { isUser: true, isLoggedIn: true },
-              // }
-            );
+            let returnUrl = sessionStorage.getItem("returnUrl");
+            if (returnUrl) {
+              this.router.navigate([returnUrl]);
+            } else this.router.navigate(["/"]);
           }
         }
       },
