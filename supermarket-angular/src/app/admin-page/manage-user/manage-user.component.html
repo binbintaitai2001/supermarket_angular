@@ -3,7 +3,7 @@
     class="card-header d-flex justify-content-between text-success font-weight-bold"
   >
     User List
-    <a
+    <!-- <a
       title="Thêm"
       class="btn btn-outline-success"
       routerLink="/admin/product/add"
@@ -11,9 +11,9 @@
     >
       <i class="fa fa-plus" aria-hidden="true"></i>
       Add
-    </a>
+    </a> -->
   </div>
-  <div class="card-body">
+  <div *ngIf="users?.length > 0; else empty" class="card-body">
     <table class="table table-hover table-bordered">
       <thead class="thead-dark">
         <tr>
@@ -56,4 +56,7 @@
       </tbody>
     </table>
   </div>
+  <ng-template #empty>
+    <app-empty-result></app-empty-result>
+  </ng-template>
 </div>

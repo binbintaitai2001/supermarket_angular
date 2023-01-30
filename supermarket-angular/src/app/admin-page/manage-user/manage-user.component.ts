@@ -12,7 +12,7 @@ import { User } from "src/app/Entity/User";
 export class ManageUserComponent implements OnInit {
   constructor(private service: ApiService, private router: Router) {}
 
-  private users: User[];
+  private users: User[] = [];
 
   backtoLogin(): void {
     sessionStorage.setItem("returnUrl", this.router.url);

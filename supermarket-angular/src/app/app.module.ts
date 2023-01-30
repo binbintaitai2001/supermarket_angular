@@ -38,6 +38,7 @@ import { PersonalComponent } from './profile/personal/personal.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { YourOrdersComponent } from './profile/your-orders/your-orders.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { EmptyResultComponent } from './empty-result/empty-result.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     ChangePasswordComponent,
     YourOrdersComponent,
     NotFoundPageComponent,
+    EmptyResultComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],

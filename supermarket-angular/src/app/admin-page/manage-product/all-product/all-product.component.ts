@@ -17,7 +17,7 @@ export class AllProductComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  private products: Product[];
+  private products: Product[] = [];
 
   ngOnInit() {
     this.service.getProducts().subscribe((res) => {

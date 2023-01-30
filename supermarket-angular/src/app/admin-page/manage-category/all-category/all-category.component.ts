@@ -17,7 +17,7 @@ export class AllCategoryComponent implements OnInit {
     private router: Router
   ) {}
 
-  private categories: Category[];
+  private categories: Category[] = [];
 
   ngOnInit() {
     this.service.getCategories().subscribe((res) => {
