@@ -12,6 +12,12 @@ import { Cartitem } from "../Entity/cartitem";
 export class CartPageComponent implements OnInit {
   constructor(private apiservice: ApiService, private router: Router) {}
   cartitemarray: Cartitem[] = [];
+
+  backtoLogin(): void {
+    sessionStorage.setItem("returnUrl", this.router.url);
+    this.router.navigate(["/login"]);
+  }
+
   ngOnInit() {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -25,11 +31,12 @@ export class CartPageComponent implements OnInit {
         (error) => {
           console.log("error ", error);
           if (error.error.response === "This Access Token Expired!") {
-            this.router.navigate(["/login"]);
+            this.backtoLogin();
           }
         }
       );
     } else {
+      this.backtoLogin();
     }
   }
   cartTotal = 0;

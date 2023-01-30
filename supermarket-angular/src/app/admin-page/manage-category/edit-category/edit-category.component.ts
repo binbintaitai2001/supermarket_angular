@@ -33,8 +33,13 @@ export class EditCategoryComponent implements OnInit {
     });
   }
 
+  backtoLogin(): void {
+    sessionStorage.setItem("returnUrl", this.router.url);
+    this.router.navigate(["/login"]);
+  }
+
   handleSubmit(): void {
-    const token = sessionStorage.getItem("token").toString();
+    const token = sessionStorage.getItem("token");
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
 
@@ -46,12 +51,13 @@ export class EditCategoryComponent implements OnInit {
         (errorObject) => {
           console.log("Error", errorObject);
           if (errorObject.error.response === "This Access Token Expired!") {
-            this.router.navigate(["/login"]);
+            this.backtoLogin();
           }
         }
       );
     } else {
       console.log("token expired");
+      this.backtoLogin();
     }
   }
 }

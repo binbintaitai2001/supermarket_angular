@@ -13,8 +13,13 @@ import { User } from "src/app/Entity/User";
 export class PersonalComponent implements OnInit {
   constructor(private service: ApiService, private router: Router) {}
 
+  backtoLogin(): void {
+    sessionStorage.setItem("returnUrl", this.router.url);
+    this.router.navigate(["/login"]);
+  }
+
   ngOnInit() {
-    const token = sessionStorage.getItem("token").toString();
+    const token = sessionStorage.getItem("token");
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
       this.service.getProfile(headers).subscribe(
@@ -26,7 +31,7 @@ export class PersonalComponent implements OnInit {
         (error) => {
           console.log("Error", error);
           if (error.error.response === "This Access Token Expired!") {
-            this.router.navigate(["/login"]);
+            this.backtoLogin();
           }
         }
       );
@@ -75,7 +80,7 @@ export class PersonalComponent implements OnInit {
     this.updateUserForm.phone = this.user.phone;
 
     console.log(this.updateUserForm);
-    const token = sessionStorage.getItem("token").toString();
+    const token = sessionStorage.getItem("token");
     if (token !== null) {
       const headers = new HttpHeaders().set("Authorization", token);
       this.service.updateProfile(headers, this.updateUserForm).subscribe(
@@ -92,10 +97,12 @@ export class PersonalComponent implements OnInit {
           this.reason = error.error.message;
           this.ChangeProfileFail = !this.ChangeProfileFail;
           if (error.error.response === "This Access Token Expired!") {
-            this.router.navigate(["/login"]);
+            this.backtoLogin();
           }
         }
       );
+    } else {
+      this.backtoLogin();
     }
   }
 }
