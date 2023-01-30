@@ -17,7 +17,7 @@
   >
     Personal Information
     <div
-      *ngIf="!isEditing; else SaveInfo"
+      *ngIf="!isEditing; else cancel"
       title="Edit Your Information"
       class="btn btn-outline-success"
       (click)="activeEdit()"
@@ -26,21 +26,21 @@
       <i class="fa fa-pencil" aria-hidden="true"></i>
       Edit
     </div>
-    <ng-template #SaveInfo>
+    <ng-template #cancel>
       <button
         title="Edit Your Information"
         class="btn btn-outline-success"
-        (click)="saveInfo()"
         role="button"
+        (click)="activeEdit()"
         [disabled]="PersonalForm.invalid"
       >
         <i class="fa-solid fa-check"></i>
-        Save
+        Cancel
       </button>
     </ng-template>
   </div>
   <div class="card-body">
-    <form #PersonalForm="ngForm" (ngSubmit)="(functionName)">
+    <form #PersonalForm="ngForm" (ngSubmit)="handleSubmit()">
       <table class="table table-hover table-bordered">
         <thead class="thead-dark">
           <tr>
@@ -222,6 +222,13 @@
           </tr>
         </tbody>
       </table>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="PersonalForm.invalid"
+      >
+        OK
+      </button>
     </form>
   </div>
 </div>

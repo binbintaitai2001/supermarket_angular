@@ -72,7 +72,7 @@ export class PersonalComponent implements OnInit {
     this.isEditing = !this.isEditing;
   }
 
-  saveInfo(): void {
+  handleSubmit(): void {
     this.updateUserForm.address = this.user.address;
     this.updateUserForm.dob = this.user.dob;
     this.updateUserForm.email = this.user.email;
