@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
     private service: ApiService
   ) {}
 
-  loginForm: LoginForm = new LoginForm("admin@gmail.com", "admin123456");
+  loginForm: LoginForm = new LoginForm("", "");
 
   ngOnInit() {}
 
