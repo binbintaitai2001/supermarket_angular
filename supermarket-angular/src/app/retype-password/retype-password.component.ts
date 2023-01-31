@@ -46,6 +46,7 @@ export class RetypePasswordComponent implements OnInit {
       },
       (error) => {
         console.log("Error", error);
+        alert(error.error.message);
       }
     );
   }

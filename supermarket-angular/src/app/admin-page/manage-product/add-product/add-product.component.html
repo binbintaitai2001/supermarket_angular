@@ -1,5 +1,10 @@
 <h1 style="text-align: center">Add Product</h1>
-<form #addProductForm="ngForm" novalidate (ngSubmit)="handleSubmit()">
+<form
+  #addProductForm="ngForm"
+  novalidate
+  (ngSubmit)="handleSubmit()"
+  class="mb-3"
+>
   <div class="form-group">
     <label>Product Name</label>
     <input
