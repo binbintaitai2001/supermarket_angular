@@ -33,6 +33,10 @@ export class ManageUserComponent implements OnInit {
     }
   }
 
+  disableUser(): void {
+    alert("comming soon !!");
+  }
+
   resetPasswordUser(id): void {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
