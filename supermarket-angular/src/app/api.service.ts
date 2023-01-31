@@ -9,6 +9,7 @@ import { User } from "./Entity/User";
 import { ResponseObjectEntity } from "./Entity/ResponseObJectEntity";
 import { Cartitem } from "./Entity/cartitem";
 import { UpdateUserForm } from "./Entity/UpdateUserForm";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -17,6 +18,12 @@ export class ApiService {
   private ServerLink = "http://localhost:5000";
 
   constructor(private http: HttpClient) {}
+
+  backtoLogin(router: Router): void {
+    alert("Time out! please login again");
+    sessionStorage.setItem("returnUrl", router.url);
+    router.navigate(["/login"]);
+  }
 
   Register(user: User): Observable<any> {
     return this.http.post<LoginForm>(this.ServerLink + "/user/signUp", user);

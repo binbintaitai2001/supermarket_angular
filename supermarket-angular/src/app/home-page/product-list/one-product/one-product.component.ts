@@ -30,11 +30,6 @@ export class OneProductComponent implements OnInit {
     this.buyQuantity++;
   }
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   addToCart(): void {
     console.log("proId:", this.product.id);
     console.log("buyQuantity:", this.buyQuantity);
@@ -51,13 +46,13 @@ export class OneProductComponent implements OnInit {
           (errorObject) => {
             console.log("Error", errorObject);
             if (errorObject.error.response === "This Access Token Expired!") {
-              this.backtoLogin();
+              this.service.backtoLogin(this.router);
             }
           }
         );
     } else {
       console.log("token expired");
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 }

@@ -30,11 +30,6 @@ export class ChangePasswordComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   handleSubmit(): void {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -55,12 +50,12 @@ export class ChangePasswordComponent implements OnInit {
             this.reason = error.error.message;
             this.ChangePasswordFail = !this.ChangePasswordFail;
             if (error.error.response === "This Access Token Expired!") {
-              this.backtoLogin();
+              this.service.backtoLogin(this.router);
             }
           }
         );
     } else {
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 }

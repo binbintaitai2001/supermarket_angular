@@ -40,11 +40,6 @@ export class AddProductComponent implements OnInit {
     };
   }
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   handleSubmit(): void {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -62,18 +57,19 @@ export class AddProductComponent implements OnInit {
         .subscribe(
           (res) => {
             console.log("no Error", res);
+            alert(res.response.message);
             this.router.navigate(["/admin/product/all"]);
           },
           (errorObject) => {
             console.log("Error", errorObject);
             if (errorObject.error.response === "This Access Token Expired!") {
-              this.backtoLogin();
+              this.service.backtoLogin(this.router);
             }
           }
         );
     } else {
       console.log("token expired");
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 

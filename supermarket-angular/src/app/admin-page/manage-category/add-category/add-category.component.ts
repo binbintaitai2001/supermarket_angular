@@ -20,11 +20,6 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {}
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   handleSubmit(): void {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -33,18 +28,20 @@ export class AddCategoryComponent implements OnInit {
       this.service.CreateCategiory(this.category, headers).subscribe(
         (data) => {
           console.log("no Error", data);
+          alert(data.response.message);
           this.router.navigate(["/admin/category/all"]);
         },
         (errorObject) => {
           console.log("Error", errorObject);
+          alert(errorObject.error.message);
           if (errorObject.error.response === "This Access Token Expired!") {
-            this.backtoLogin();
+            this.service.backtoLogin(this.router);
           }
         }
       );
     } else {
       console.log("token expired");
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 }

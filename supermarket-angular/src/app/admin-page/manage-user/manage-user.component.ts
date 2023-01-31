@@ -14,11 +14,6 @@ export class ManageUserComponent implements OnInit {
 
   private users: User[] = [];
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   ngOnInit() {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -31,7 +26,7 @@ export class ManageUserComponent implements OnInit {
         (error) => {
           console.log(error);
           if (error.error.response === "This Access Token Expired!") {
-            this.backtoLogin();
+            this.service.backtoLogin(this.router);
           }
         }
       );
@@ -45,16 +40,17 @@ export class ManageUserComponent implements OnInit {
       this.service.ResetPasswordUser(id, headers).subscribe(
         (res) => {
           console.log(res);
+          alert(res.response.message);
         },
         (error) => {
           console.log(error);
           if (error.error.response === "This Access Token Expired!") {
-            this.backtoLogin();
+            this.service.backtoLogin(this.router);
           }
         }
       );
     } else {
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 }

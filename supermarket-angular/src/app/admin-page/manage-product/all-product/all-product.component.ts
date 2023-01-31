@@ -25,11 +25,6 @@ export class AllProductComponent implements OnInit {
     });
   }
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   deleteProduct(id): void {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -45,13 +40,13 @@ export class AllProductComponent implements OnInit {
         (error) => {
           console.log("Error", error);
           if (error.error.response === "This Access Token Expired!") {
-            this.backtoLogin();
+            this.service.backtoLogin(this.router);
           }
         }
       );
     } else {
       console.log("token expired");
-      this.backtoLogin();
+      this.service.backtoLogin(this.router);
     }
   }
 }

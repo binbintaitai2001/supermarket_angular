@@ -20,11 +20,6 @@ export class CartPageComponent implements OnInit {
   }
   cartitemarray: Cartitem[] = [];
 
-  backtoLogin(): void {
-    sessionStorage.setItem("returnUrl", this.router.url);
-    this.router.navigate(["/login"]);
-  }
-
   ngOnInit() {
     const token = sessionStorage.getItem("token");
     if (token !== null) {
@@ -38,12 +33,12 @@ export class CartPageComponent implements OnInit {
         (error) => {
           console.log("error ", error);
           if (error.error.response === "This Access Token Expired!") {
-            this.backtoLogin();
+            this.apiservice.backtoLogin(this.router);
           }
         }
       );
     } else {
-      this.backtoLogin();
+      this.apiservice.backtoLogin(this.router);
     }
   }
   cartTotal = 0;
